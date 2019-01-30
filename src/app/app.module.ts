@@ -16,7 +16,7 @@ import {DatePipe} from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

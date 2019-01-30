@@ -9,7 +9,7 @@
 </nav>
 <div class="row"> 
   <div class="col-md-3 selection">
-      <input [(ngModel)]="dateMesB" type="date" id="dateMes" name="dateMes" min="2018-01-01" max="2018-12-31" (change)="onDateChanged()">
+      <input [(ngModel)]="dateMesB" type="date" id="dateMes" name="dateMes" min="2019-01-01" max="2019-01-31" (change)="onDateChanged()">
       <div (click)="pm10()">Particules fines (ppm 10)</div>
       <div (click)="pm25()">Particules fines (ppm 2.5)</div>
       <div (click)="nh3()">Ammoniac (NH3)</div>
@@ -17,15 +17,46 @@
       <div (click)="no2()">Dioxyde d'azote (NO2)</div>
   </div>
   <div class="col-md-9">
-    <div class="row"><div id="map"></div></div>
+    <div class="row"><div id="map" (click)="onMapClick()"></div></div>
     <div class="row" style="height:20px;"></div>
     <div class="row">
       <h2 id="nomStation"></h2>
     </div>
-    <div class="row">
-      <div class="col-lg-6 col-md-12 col-sm-12" id="chartContainer" style="height: 370px; width: 100%;"></div>
-      <div class="col-lg-1"></div>
-      <div class="col-lg-5 col-md-12 col-sm-12" id="details"><table class="table table-sm table-hover table-stripped table-light table-responsive-sm" id="tableau"></table></div>
+    <div [ngClass]="{'cache': clicked, 'row':true}">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#co">Monoxyde de Carbone</a></li>
+        <li><a data-toggle="tab" href="#nh3">Ammoniac</a></li>
+        <li><a data-toggle="tab" href="#no2">Dioxyde d'Azote</a></li>
+        <li><a data-toggle="tab" href="#pm10">Particules fines (PPM 10)</a></li>
+        <li><a data-toggle="tab" href="#pm25">Particules fines (PPM 2.5)</a></li>
+        <li><a data-toggle="tab" href="#th">Température et Humidité</a></li>
+        <li><a data-toggle="tab" href="#detailsTable">Tableau des données</a></li>
+      </ul>
+    </div>
+
+    <div class="tab-content">
+      <div id="co" class="tab-pane fade in active">
+        <div class="row" id="chartContainerCO" style="height: 370px; width: 100%;"></div>
+      </div>
+      <div id="nh3" class="tab-pane fade in active">
+        <div class="row" id="chartContainerNH3" style="height: 370px; width: 100%;"></div>
+      </div>
+      <div id="no2" class="tab-pane fade in active">
+        <div class="row" id="chartContainerNO2" style="height: 370px; width: 100%;"></div>
+      </div>
+      <div id="pm10" class="tab-pane fade in active">
+        <div class="row" id="chartContainer" style="height: 370px; width: 100%;"></div>
+      </div>
+      <div id="pm25" class="tab-pane fade in active">
+        <div class="row" id="chartContainerPM25" style="height: 370px; width: 100%;"></div>
+      </div>
+      <div id="th" class="tab-pane fade in active">
+        <div class="row" id="chartContainerTH" style="height: 370px; width: 100%;"></div>
+      </div>
+      <div id="detailsTable" class="tab-pane fade in active">
+        <h3>Tableau des données</h3>
+        <div class=row><table class="table table-sm table-hover table-stripped table-light table-responsive-sm" id="tableau"></table></div>
+      </div>
     </div>
   </div>
 </div>

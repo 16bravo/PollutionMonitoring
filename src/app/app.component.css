@@ -50,3 +50,33 @@
 .selection>div:hover{
     background-color: rgba(255,255,255,0.25);
 }
+
+li>a{
+    cursor:pointer;
+    overflow:hidden;
+    outline:none;
+    border-radius: 5px 0 10px 0;
+    width:100%;
+    background-color: Transparent;
+    background-color: no-repeat;
+    color:white;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    font-size:0.75em;
+    margin-right:5px;
+}
+
+li>a:hover{
+    background-color: rgba(255,255,255,0.25);
+    outline:none;
+}
+
+h3{
+    color:white;
+}
+
+.cache{
+    visibility: hidden;
+}
